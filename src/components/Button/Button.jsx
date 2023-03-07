@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FooterStyle, ButtonStyle } from '../Button/Button.styled';
 
 export const Button = ({ onClick }) => {
@@ -9,4 +10,8 @@ export const Button = ({ onClick }) => {
       </ButtonStyle>
     </FooterStyle>
   );
+};
+
+Button.propTypes = {
+  onClick: PropTypes.func.isRequired,
 };

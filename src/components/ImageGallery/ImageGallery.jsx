@@ -5,6 +5,8 @@ import { addImage } from 'components/Api/API';
 import { Loader } from '../Loader/Loader';
 import { Button } from '../Button/Button';
 import { ImageGallery as ImageGalleryStyles } from './ImageGallery.styled';
+import { toast } from 'react-toastify';
+import { object } from 'prop-types';
 
 class ImageGallery extends Component {
   state = {
@@ -21,13 +23,11 @@ class ImageGallery extends Component {
       try {
         this.setState({ loading: true });
         const nextImages = await addImage(this.props.query, this.state.page);
-        console.log(' this.props.query 1', this.props.query);
         this.props.handleLoadMore(nextImages);
       } catch (error) {
         this.setState({ error: error });
       } finally {
         this.setState({ loading: false });
-        console.log(' this.props.query 2', this.props.query);
       }
     }
   };
@@ -35,9 +35,10 @@ class ImageGallery extends Component {
     this.setState(prevState => ({ page: prevState.page + 1 }));
   };
   render() {
-    // const { status } = this.state;
     const { images } = this.props;
-
+    if (!images.length && this.state.page !== 1) {
+      return toast(`Sorry, there are no more images!`);
+    }
     if (images.length) {
       return (
         <div>
@@ -59,23 +60,11 @@ class ImageGallery extends Component {
         </div>
       );
     }
-
-    // if (status === 'idle') {
-    //   return <div>Search images and photos</div>;
-    // }
-    // if (status === 'pending') {
-    //   console.log('status pending');
-    //   return <Loader />;
-    // }
-    // // if (status === 'rejected') {
-    // //   return <div>Error:{error}</div>;
-    // // }
-    // if (status === 'resolved') {
   }
 }
-// }
 
 ImageGallery.propTypes = {
+  images: PropTypes.arrayOf(object).isRequired,
   query: PropTypes.string.isRequired,
   handleLoadMore: PropTypes.func.isRequired,
 };
@@ -124,3 +113,15 @@ export default ImageGallery;
 // //     <ImageGalleryItem />
 // //   </div>
 // // );
+
+// if (status === 'idle') {
+//   return <div>Search images and photos</div>;
+// }
+// if (status === 'pending') {
+//   console.log('status pending');
+//   return <Loader />;
+// }
+// // if (status === 'rejected') {
+// //   return <div>Error:{error}</div>;
+// // }
+// if (status === 'resolved') {

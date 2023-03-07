@@ -65,10 +65,11 @@ export const Field = styled(SearchInput)`
   font-size: 20px;
   border: none;
   outline: none;
-  padding-left: 6px;
-  padding-right: 6px;
+  padding-left: 7px;
+  padding-right: 7px;
   &::placeholder {
     font: inherit;
     font-size: 18px;
+    align-items: center;
   }
 `;

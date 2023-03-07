@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Modal from '../Modal/Modal';
 import {
   ImageGalleryItem as Item,
@@ -30,3 +31,11 @@ export default class ImageGalleryItem extends Component {
     );
   }
 }
+
+ImageGalleryItem.propTypes = {
+  onSubmit: PropTypes.func,
+  image: PropTypes.object.isRequired,
+  src: PropTypes.string.isRequired,
+  srcmodal: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+};
