@@ -39,7 +39,6 @@ export class App extends Component {
         <Searchbar onSubmit={this.addImage} />
         <ImageGallery
           images={images}
-          // onClick={this.toggleModal}
           query={searchQuery}
           handleLoadMore={newImages => this.handleLoadMore(newImages)}
         />
