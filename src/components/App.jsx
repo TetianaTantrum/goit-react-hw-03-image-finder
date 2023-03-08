@@ -18,7 +18,7 @@ export class App extends Component {
       }
       const hits = await API.addImage(searchQuery, page);
       this.setState(state => {
-        return { images: hits, searchQuery };
+        return { images: hits, searchQuery, page };
       });
     } catch (error) {
       toast(`Error: ${error}`);
