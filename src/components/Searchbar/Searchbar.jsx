@@ -12,7 +12,7 @@ import {
 
 export const Searchbar = ({ onSubmit }) => {
   const handleSubmit = async (values, actions) => {
-    await onSubmit(values, this.props.page);
+    await onSubmit(values, actions);
     actions.setSubmitting(false);
     actions.resetForm();
   };
