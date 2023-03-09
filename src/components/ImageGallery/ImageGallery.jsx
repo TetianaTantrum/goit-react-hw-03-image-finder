@@ -36,7 +36,6 @@ class ImageGallery extends Component {
   };
   render() {
     const { images } = this.props;
-    console.log(images);
 
     if (this.state.page !== 1 && !images?.length) {
       return toast(`Sorry, there are no more images!`);
