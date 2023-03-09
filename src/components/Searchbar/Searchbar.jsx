@@ -18,10 +18,7 @@ export const Searchbar = ({ onSubmit }) => {
   };
   return (
     <Header className="searchbar">
-      <Formik
-        initialValues={{ searchQuery: '', page: 1 }}
-        onSubmit={handleSubmit}
-      >
+      <Formik initialValues={{ searchQuery: '' }} onSubmit={handleSubmit}>
         {({ isSubmitting }) => (
           <Form>
             <Field
