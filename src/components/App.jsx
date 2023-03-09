@@ -10,6 +10,7 @@ export class App extends Component {
   state = {
     images: [],
     searchQuery: '',
+    page: 1,
   };
   addImage = async ({ searchQuery }, page) => {
     try {
@@ -18,7 +19,7 @@ export class App extends Component {
       }
       const hits = await API.addImage(searchQuery, page);
       this.setState(state => {
-        return { images: hits, searchQuery, page };
+        return { images: hits, searchQuery };
       });
     } catch (error) {
       toast(`Error: ${error}`);

@@ -12,13 +12,16 @@ import {
 
 export const Searchbar = ({ onSubmit }) => {
   const handleSubmit = async (values, actions) => {
-    await onSubmit(values, actions);
+    await onSubmit(values, 1);
     actions.setSubmitting(false);
     actions.resetForm();
   };
   return (
     <Header className="searchbar">
-      <Formik initialValues={{ searchQuery: '' }} onSubmit={handleSubmit}>
+      <Formik
+        initialValues={{ searchQuery: '', page: 1 }}
+        onSubmit={handleSubmit}
+      >
         {({ isSubmitting }) => (
           <Form>
             <Field
